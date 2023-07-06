@@ -109,7 +109,7 @@ export default function SliderForAdding({
                           aria-hidden="true"
                         />
                       </div>
-                      <div className="is-scrollbar-hidden flex grow flex-col space-y-4 overflow-y-auto p-4">
+                      <div className=" h-[60vh] flex grow flex-col space-y-4  p-4">
                         <label className="block">
                           <span className=" dark:text-navy-50">Task Title</span>
                           <input
@@ -178,8 +178,8 @@ export default function SliderForAdding({
                           //autoComplete="off"
                           >
                             <option value=""></option>
-                          </select> */}
-                        {/* </label> */}
+                          </select> 
+                        </label>*/}
                       </div>
                       <div className="flex items-center justify-between fixed md:w-[83%] w-[90%] bottom-6 py-3 px-4">
                         <button
