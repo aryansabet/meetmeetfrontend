@@ -26,6 +26,7 @@ const Homepage = () => {
   //   { id: "unfinishedTasks", title: "Unfinished Tasks" },
   //   { id: "none", title: "None" },
   // ];
+  
   const information = {
     name: "Name of the event",
     categories: ["sport", "cultural"],
@@ -95,10 +96,19 @@ const Homepage = () => {
   // console.log(`data is ${status.results}`);
   let cards = status ? status.results : {};
   console.log(status.count);
-  const { data: tasks } = useQuery("mytasks",
-    () => { return axios.get("/api/my-tasks") }
-  );
 
+  const { data: tasks , isError } = useQuery("mytasks",
+    () => { 
+      try {
+        return axios.get("/api/my-tasks")
+      } catch (error) {
+        if(error.statusCode === 404) {
+          return []
+        }
+        throw error
+      }
+      }
+  );
   return (
     <>
       <PageWrapper>
@@ -237,7 +247,7 @@ const Homepage = () => {
                             </p>
                             <div class="mt-2 flex justify-between">
                               <div class="flex flex-wrap -space-x-2">
-                                {<Skeleton members={item.user} />}
+                                {<Skeleton members={item.user} sofa={true} />}
 
                               </div>
                               {/* <button
